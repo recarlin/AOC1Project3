@@ -23,7 +23,8 @@
     NSLog(@"Result: %d", addResult);
     
     NSString* appendResult = [self Append:@"Hello" second:@"world!"];
-    NSLog(@"Result: %@", appendResult);
+    [self displayAlertWithString:appendResult];
+    
 };
 
 - (int)Add:(NSInteger)first second:(NSInteger)second
@@ -46,6 +47,13 @@
     return combined;
 }
 
+- (void)displayAlertWithString:(NSString*)alert
+{
+    UIAlertView *appendView = [[UIAlertView alloc] initWithTitle:@"ALERT" message:alert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    if (appendView != nil){
+        [appendView show];
+    };
+}
 
 - (void)viewDidUnload
 {
