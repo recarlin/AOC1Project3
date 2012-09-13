@@ -21,6 +21,9 @@
 
     int addResult = [self Add:5 second:9];
     NSLog(@"Result: %d", addResult);
+    
+    NSString* appendResult = [self Append:@"Hello" second:@"world!"];
+    NSLog(@"Result: %@", appendResult);
 };
 
 - (int)Add:(NSInteger)first second:(NSInteger)second
@@ -30,8 +33,20 @@
 
 - (BOOL)Compare:(NSInteger)first second:(NSInteger)second
 {
-    
+    if (first == second){
+        return YES;
+    } else {
+        return NO;
+    }
 }
+
+- (NSString*)Append:(NSString*)first second:(NSString*)second
+{
+    NSMutableString *combined = [[NSMutableString alloc] initWithFormat:@"%@ %@", first, second];
+    return combined;
+}
+
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

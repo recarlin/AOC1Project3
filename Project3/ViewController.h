@@ -14,5 +14,6 @@
 }
 
 - (int)Add:(NSInteger)first second:(NSInteger)second;
+- (BOOL)Compare:(NSInteger)first second:(NSInteger)second;
 
 @end
