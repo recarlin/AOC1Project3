@@ -19,10 +19,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    int addResult = [self Add:5 second:9];
-    NSLog(@"Result: %d", addResult);
+    NSNumber *addResult = [[NSNumber alloc] initWithInt:[self Add:5 second:9]];
+    NSString *convertNumber = [[NSString alloc] initWithString:[addResult stringValue]];
     
     NSString* appendResult = [self Append:@"Hello" second:@"world!"];
+    
+    [self displayAlertWithString:convertNumber];
     [self displayAlertWithString:appendResult];
     
 };
