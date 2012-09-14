@@ -17,16 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 
+//First and second are the numbers for our Add and Compare functions. FirstString and SecondString are for the append function
     int first = 5;
-    int second = 4;
+    int second = 15;
     NSString *firstString = @"Hello";
     NSString *secondString = @"world!";
-    
-    NSNumber *addResult = [[NSNumber alloc] initWithInt:[self Add:first secondInt:second]];
-    NSString *convertNumber = [[NSString alloc] initWithString:[addResult stringValue]];
-    
+//First, we set a BOOL variable to the return of our Compare function. Next, we take that variable and do an if check to see if it is YES or NO. If it is YES, build a NSString with the variables displaying that they are equal and run the DisplayAlertWithString function. If it is NO, do the same thing but display that it is not equal.
     BOOL equal = [self Compare:first secondInt:second];
     if (equal == YES){
         NSString *compareYes = [[NSString alloc] initWithFormat:@"%d and %d are equal", first, second];
@@ -35,19 +32,22 @@
         NSString *compareNo = [[NSString alloc] initWithFormat:@"%d and %d are not equal", first, second];
         [self displayAlertWithString: compareNo];
     }
-    
-    NSString *appendResult = [self Append:firstString secondStr:secondString];
-    
+//Here we set the NSNumber to the return of the Add call. Then, we convert the NSNumber into a NSString with the stringValue method. Finally, we call the displayAlertWithtring function, with our converted string as the parameter.
+    NSNumber *addResult = [[NSNumber alloc] initWithInt:[self Add:first secondInt:second]];
+    NSString *convertNumber = [[NSString alloc] initWithFormat:@"The number is %@",[addResult stringValue]];
     [self displayAlertWithString:convertNumber];
+//This is defining a NSString to the return of our Append function. Then, we call the displayAlertWithString function, passing our string into the message.
+    NSString *appendResult = [self Append:firstString secondStr:secondString];
     [self displayAlertWithString:appendResult];
     
+     
 };
-
+//Add function simply adds the two int parameters and returns an int.
 - (int)Add:(NSInteger)firstInt secondInt:(NSInteger)secondInt
 {
     return firstInt + secondInt;
 };
-
+//Bool function that takes too ints. If they are equal, it returns YES. If not, it returns NO.
 - (BOOL)Compare:(NSInteger)firstInt secondInt:(NSInteger)secondInt
 {
     if (firstInt == secondInt){
@@ -62,7 +62,7 @@
     NSMutableString *combined = [[NSMutableString alloc] initWithFormat:@"%@ %@", firstStr, secondStr];
     return combined;
 }
-
+//Creates an alert view with the message sent via the string parameter from the other functions. It then shows the alert as long as everything goes according to plan.
 - (void)displayAlertWithString:(NSString*)alert
 {
     UIAlertView *appendView = [[UIAlertView alloc] initWithTitle:@"Results" message:alert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
