@@ -13,7 +13,9 @@
     
 }
 
-- (int)Add:(NSInteger)first second:(NSInteger)second;
-- (BOOL)Compare:(NSInteger)first second:(NSInteger)second;
+- (int)Add:(NSInteger)firstInt secondInt:(NSInteger)secondInt;
+- (BOOL)Compare:(NSInteger)firstInt secondInt:(NSInteger)secondInt;
+- (NSString*)Append:(NSString*)firstStr secondStr:(NSString*)secondStr;
+- (void)displayAlertWithString:(NSString*)alert;
 
 @end

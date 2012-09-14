@@ -19,39 +19,53 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    NSNumber *addResult = [[NSNumber alloc] initWithInt:[self Add:5 second:9]];
+    int first = 5;
+    int second = 4;
+    NSString *firstString = @"Hello";
+    NSString *secondString = @"world!";
+    
+    NSNumber *addResult = [[NSNumber alloc] initWithInt:[self Add:first secondInt:second]];
     NSString *convertNumber = [[NSString alloc] initWithString:[addResult stringValue]];
     
-    NSString* appendResult = [self Append:@"Hello" second:@"world!"];
+    BOOL equal = [self Compare:first secondInt:second];
+    if (equal == YES){
+        NSString *compareYes = [[NSString alloc] initWithFormat:@"%d and %d are equal", first, second];
+        [self displayAlertWithString: compareYes];
+    } else {
+        NSString *compareNo = [[NSString alloc] initWithFormat:@"%d and %d are not equal", first, second];
+        [self displayAlertWithString: compareNo];
+    }
+    
+    NSString *appendResult = [self Append:firstString secondStr:secondString];
     
     [self displayAlertWithString:convertNumber];
     [self displayAlertWithString:appendResult];
     
 };
 
-- (int)Add:(NSInteger)first second:(NSInteger)second
+- (int)Add:(NSInteger)firstInt secondInt:(NSInteger)secondInt
 {
-    return first + second;
+    return firstInt + secondInt;
 };
 
-- (BOOL)Compare:(NSInteger)first second:(NSInteger)second
+- (BOOL)Compare:(NSInteger)firstInt secondInt:(NSInteger)secondInt
 {
-    if (first == second){
+    if (firstInt == secondInt){
         return YES;
     } else {
         return NO;
     }
 }
-
-- (NSString*)Append:(NSString*)first second:(NSString*)second
+//Append function contains a NSMutableString that takes 2 string paramenters and combines them using formating, then returns the string.
+- (NSString*)Append:(NSString*)firstStr secondStr:(NSString*)secondStr
 {
-    NSMutableString *combined = [[NSMutableString alloc] initWithFormat:@"%@ %@", first, second];
+    NSMutableString *combined = [[NSMutableString alloc] initWithFormat:@"%@ %@", firstStr, secondStr];
     return combined;
 }
 
 - (void)displayAlertWithString:(NSString*)alert
 {
-    UIAlertView *appendView = [[UIAlertView alloc] initWithTitle:@"ALERT" message:alert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *appendView = [[UIAlertView alloc] initWithTitle:@"Results" message:alert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     if (appendView != nil){
         [appendView show];
     };
